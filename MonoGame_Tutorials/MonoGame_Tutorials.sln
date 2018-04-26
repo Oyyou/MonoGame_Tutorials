@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial001", "Tutorial001\Tutorial001.csproj", "{66F1189C-3F00-4E32-94D7-BE93F7E83791}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial002", "Tutorial002\Tutorial002.csproj", "{6AA4E2ED-72CF-4C23-8F36-FFEF386506BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,6 +17,10 @@ Global
 		{66F1189C-3F00-4E32-94D7-BE93F7E83791}.Debug|x86.Build.0 = Debug|x86
 		{66F1189C-3F00-4E32-94D7-BE93F7E83791}.Release|x86.ActiveCfg = Release|x86
 		{66F1189C-3F00-4E32-94D7-BE93F7E83791}.Release|x86.Build.0 = Release|x86
+		{6AA4E2ED-72CF-4C23-8F36-FFEF386506BE}.Debug|x86.ActiveCfg = Debug|x86
+		{6AA4E2ED-72CF-4C23-8F36-FFEF386506BE}.Debug|x86.Build.0 = Debug|x86
+		{6AA4E2ED-72CF-4C23-8F36-FFEF386506BE}.Release|x86.ActiveCfg = Release|x86
+		{6AA4E2ED-72CF-4C23-8F36-FFEF386506BE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
