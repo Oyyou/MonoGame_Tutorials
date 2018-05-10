@@ -34,6 +34,31 @@ namespace Tutorial020.Sprites
 
     public void OnCollide(Sprite sprite)
     {
+      // Bullets don't collide with eachother
+      if (sprite is Bullet)
+        return;
+
+      // Enemies can't shoot eachother
+      if (sprite is Enemy && this.Parent is Enemy)
+        return;
+
+      // Players can't shoot eachother
+      if (sprite is Player && this.Parent is Player)
+        return;
+
+      // Can't hit a player if they're dead
+      if (sprite is Player && ((Player)sprite).IsDead)
+        return;
+
+      if (this.Parent is Player)
+      {
+        ((Player)this.Parent).Score.Value++;
+      }
+
+      IsRemoved = true;
+
+      return;
+
       if (this.Parent is Player && sprite is Enemy)
       {
         this.IsRemoved = true;

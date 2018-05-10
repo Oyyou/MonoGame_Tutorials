@@ -16,6 +16,12 @@ namespace Tutorial020.States
   {
     private EnemyManager _enemyManager;
 
+    private SpriteFont _font;
+
+    private List<Player> _players;
+
+    private ScoreManager _scoreManager;
+
     private List<Sprite> _sprites;
 
     public int PlayerCount;
@@ -30,6 +36,10 @@ namespace Tutorial020.States
       var playerTexture = _content.Load<Texture2D>("Player");
       var bulletTexture = _content.Load<Texture2D>("Bullet");
       var enemyTexture = _content.Load<Texture2D>("Enemy_1");
+
+      _font = _content.Load<SpriteFont>("Font");
+
+      _scoreManager = ScoreManager.Load();
 
       _sprites = new List<Sprite>();
 
@@ -48,6 +58,11 @@ namespace Tutorial020.States
             Shoot = Keys.Space,
           },
           Health = 10,
+          Score = new Models.Score()
+          {
+            PlayerName = "Player 1",
+            Value = 0,
+          },
         });
       }
 
@@ -66,8 +81,15 @@ namespace Tutorial020.States
             Shoot = Keys.Enter,
           },
           Health = 10,
+          Score = new Models.Score()
+          {
+            PlayerName = "Player 2",
+            Value = 0,
+          },
         });
       }
+
+      _players = _sprites.Where(c => c is Player).Select(c => (Player)c).ToList();
 
       _enemyManager = new EnemyManager(_content);
     }
@@ -101,67 +123,7 @@ namespace Tutorial020.States
           if (!leftSprite.Rectangle.Intersects(rightSprite.Rectangle))
             continue;
 
-          if (leftSprite is Bullet)
-          {
-            if (leftSprite.Parent == rightSprite)
-              continue;
-
-            if (leftSprite.Parent is Player && rightSprite is Enemy)
-            {
-              leftSprite.IsRemoved = true;
-
-              var enemy = rightSprite as Enemy;
-
-              enemy.Health--;
-
-              if (enemy.Health <= 0)
-                enemy.IsRemoved = true;
-            }
-
-            if (leftSprite.Parent is Enemy && rightSprite is Player)
-            {
-              leftSprite.IsRemoved = true;
-
-              var player = rightSprite as Player;
-
-              player.Health--;
-
-              if (player.Health <= 0)
-                player.IsRemoved = true;
-            }
-          }
-
-          if (leftSprite is Player && rightSprite is Enemy)
-          {
-            var player = leftSprite as Player;
-            var enemy = rightSprite as Enemy;
-
-            player.Health--;
-
-            if (player.Health <= 0)
-              player.IsRemoved = true;
-
-            enemy.Health--;
-
-            if (enemy.Health <= 0)
-              enemy.IsRemoved = true;
-          }
-
-          if (leftSprite is Enemy && rightSprite is Player)
-          {
-            var player = rightSprite as Player;
-            var enemy = leftSprite as Enemy;
-
-            player.Health--;
-
-            if (player.Health <= 0)
-              player.IsRemoved = true;
-
-            enemy.Health--;
-
-            if (enemy.Health <= 0)
-              enemy.IsRemoved = true;
-          }
+          ((ICollidable)leftSprite).OnCollide(rightSprite);
         }
       }
 
@@ -174,7 +136,7 @@ namespace Tutorial020.States
         }
       }
 
-      // Add the children sprites to the list of sprites
+      // Add the children sprites to the list of sprites (ie bullets)
       int spriteCount = _sprites.Count;
       for (int i = 0; i < spriteCount; i++)
       {
@@ -185,6 +147,17 @@ namespace Tutorial020.States
         }
         sprite.Children = new List<Sprite>();
       }
+
+      // If all the players are dead, we save the scores, and return to the highscore state
+      if (_players.All(c => c.IsDead))
+      {
+        foreach (var player in _players)
+          _scoreManager.Add(player.Score);
+
+        ScoreManager.Save(_scoreManager);
+
+        _game.ChangeState(new HighscoresState(_game, _content));
+      }
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -194,6 +167,19 @@ namespace Tutorial020.States
       foreach (var sprite in _sprites)
         sprite.Draw(gameTime, spriteBatch);
 
+      spriteBatch.End();
+
+      spriteBatch.Begin();
+
+      float x = 10f;
+      foreach (var player in _players)
+      {
+        spriteBatch.DrawString(_font, "Player: " + player.Score.PlayerName, new Vector2(x, 10f), Color.White);
+        spriteBatch.DrawString(_font, "Health: " + player.Health, new Vector2(x, 30f), Color.White);
+        spriteBatch.DrawString(_font, "Score: " + player.Score.Value, new Vector2(x, 50f), Color.White);
+
+        x += 150;
+      }
       spriteBatch.End();
     }
   }

@@ -36,5 +36,19 @@ namespace Tutorial020.Sprites
       if (Position.X < -_texture.Width)
         IsRemoved = true;
     }
+
+    public override void OnCollide(Sprite sprite)
+    {
+      // If we hit a bullet that belongs to a player OR
+      // If we crash into a player that is still alive
+      if ((sprite is Bullet && ((Bullet)sprite).Parent is Player) ||
+         (sprite is Player && !((Player)sprite).IsDead))
+      {
+        Health--;
+
+        if (Health <= 0)
+          IsRemoved = true;
+      }
+    }
   }
 }

@@ -33,7 +33,7 @@ namespace Tutorial020.Sprites
       Children.Add(bullet);
     }
 
-    public void OnCollide(Sprite sprite)
+    public virtual void OnCollide(Sprite sprite)
     {
       throw new NotImplementedException();
     }

@@ -16,7 +16,17 @@ namespace Tutorial020.Sprites
 
     private KeyboardState _previousKey;
 
+    public bool IsDead
+    {
+      get
+      {
+        return Health <= 0;
+      }
+    }
+
     public Input Input { get; set; }
+
+    public Score Score { get; set; }
 
     public Player(Texture2D texture)
       : base(texture)
@@ -26,6 +36,9 @@ namespace Tutorial020.Sprites
 
     public override void Update(GameTime gameTime)
     {
+      if (IsDead)
+        return;
+
       _previousKey = _currentKey;
       _currentKey = Keyboard.GetState();
 
@@ -51,6 +64,26 @@ namespace Tutorial020.Sprites
       Position += velocity;
 
       Position = Vector2.Clamp(Position, new Vector2(Position.X, 0), new Vector2(Position.X, Game1.ScreenHeight));
+    }
+
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+    {
+      if (IsDead)
+        return;
+
+      base.Draw(gameTime, spriteBatch);
+    }
+
+    public override void OnCollide(Sprite sprite)
+    {
+      if (IsDead)
+        return;
+
+      if ((sprite is Bullet && ((Bullet)sprite).Parent is Enemy) ||
+         sprite is Enemy)
+      {
+        Health--;
+      }
     }
   }
 }
