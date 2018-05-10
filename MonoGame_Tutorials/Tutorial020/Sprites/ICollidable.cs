@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tutorial020Test.Sprites
+namespace Tutorial020.Sprites
 {
   public interface ICollidable
   {

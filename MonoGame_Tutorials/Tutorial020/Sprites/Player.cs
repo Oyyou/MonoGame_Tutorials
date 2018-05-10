@@ -5,28 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Tutorial020Test.Models;
+using Tutorial020.Models;
 using Microsoft.Xna.Framework.Input;
 
-namespace Tutorial020Test.Sprites
+namespace Tutorial020.Sprites
 {
-  public class Player : Sprite, ICollidable
+  public class Player : Ship
   {
-    private float _speed = 3f;
-
     private KeyboardState _currentKey;
 
     private KeyboardState _previousKey;
 
-    public int Health { get; set; }
-
     public Input Input { get; set; }
-
-    public EventHandler Shoot;
 
     public Player(Texture2D texture)
       : base(texture)
     {
+      Speed = 3f;
     }
 
     public override void Update(GameTime gameTime)
@@ -39,28 +34,23 @@ namespace Tutorial020Test.Sprites
 
       if (_currentKey.IsKeyDown(Input.Up))
       {
-        velocity.Y = -_speed;
+        velocity.Y = -Speed;
         _rotation = MathHelper.ToRadians(-15);
       }
       else if (_currentKey.IsKeyDown(Input.Down))
       {
-        velocity.Y += _speed;
+        velocity.Y += Speed;
         _rotation = MathHelper.ToRadians(15);
       }
 
       if (_currentKey.IsKeyDown(Input.Shoot) && _previousKey.IsKeyUp(Input.Shoot))
       {
-        Shoot(this, new EventArgs());
+        Shoot(5f);
       }
 
       Position += velocity;
 
       Position = Vector2.Clamp(Position, new Vector2(Position.X, 0), new Vector2(Position.X, Game1.ScreenHeight));
-    }
-
-    public void OnCollide(Sprite sprite)
-    {
-      throw new NotImplementedException();
     }
   }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Tutorial020Test.Sprites;
-using Tutorial020Test.Controls;
+using Tutorial020.Sprites;
+using Tutorial020.Controls;
 
-namespace Tutorial020Test.States
+namespace Tutorial020.States
 {
   public class MenuState : State
   {
@@ -48,8 +48,15 @@ namespace Tutorial020Test.States
         },
         new Button(buttonTexture, buttonFont)
         {
-          Text = "Quit",
+          Text = "Highscores",
           Position = new Vector2(Game1.ScreenWidth / 2, 480),
+          Click = new EventHandler(Button_Highscores_Clicked),
+          Layer = 0.1f
+        },
+        new Button(buttonTexture, buttonFont)
+        {
+          Text = "Quit",
+          Position = new Vector2(Game1.ScreenWidth / 2, 520),
           Click = new EventHandler(Button_Quit_Clicked),
           Layer = 0.1f
         },
@@ -58,12 +65,23 @@ namespace Tutorial020Test.States
 
     private void Button_1Player_Clicked(object sender, EventArgs args)
     {
-
+      _game.ChangeState(new GameState(_game, _content)
+      {
+        PlayerCount = 1,
+      });
     }
 
     private void Button_2Player_Clicked(object sender, EventArgs args)
     {
-      _game.ChangeState(new GameState(_game, _content));
+      _game.ChangeState(new GameState(_game, _content)
+      {
+        PlayerCount = 2,
+      });
+    }
+
+    private void Button_Highscores_Clicked(object sender, EventArgs args)
+    {
+      _game.ChangeState(new HighscoresState(_game, _content));
     }
 
     private void Button_Quit_Clicked(object sender, EventArgs args)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tutorial020Test
+namespace Tutorial020
 {
 #if WINDOWS || LINUX
     /// <summary>

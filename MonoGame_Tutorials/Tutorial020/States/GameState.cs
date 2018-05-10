@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Tutorial020Test.Sprites;
+using Tutorial020.Sprites;
 using Microsoft.Xna.Framework.Input;
+using Tutorial020.Managers;
 
-namespace Tutorial020Test.States
+namespace Tutorial020.States
 {
   public class GameState : State
   {
+    private EnemyManager _enemyManager;
+
     private List<Sprite> _sprites;
-    private List<Sprite> _newSprites;
+
+    public int PlayerCount;
 
     public GameState(Game1 game, ContentManager content)
       : base(game, content)
@@ -24,15 +28,19 @@ namespace Tutorial020Test.States
     public override void LoadContent()
     {
       var playerTexture = _content.Load<Texture2D>("Player");
+      var bulletTexture = _content.Load<Texture2D>("Bullet");
       var enemyTexture = _content.Load<Texture2D>("Enemy_1");
 
-      _sprites = new List<Sprite>()
+      _sprites = new List<Sprite>();
+
+      if (PlayerCount >= 1)
       {
-        new Player(playerTexture)
+        _sprites.Add(new Player(playerTexture)
         {
           Colour = Color.Blue,
           Position = new Vector2(100, 50),
           Layer = 0.3f,
+          Bullet = new Bullet(bulletTexture),
           Input = new Models.Input()
           {
             Up = Keys.W,
@@ -40,13 +48,17 @@ namespace Tutorial020Test.States
             Shoot = Keys.Space,
           },
           Health = 10,
-          Shoot = new System.EventHandler(Shoot),
-        },
-        new Player(playerTexture)
+        });
+      }
+
+      if (PlayerCount >= 2)
+      {
+        _sprites.Add(new Player(playerTexture)
         {
           Colour = Color.Green,
-          Position = new Vector2(125, 50),
+          Position = new Vector2(125, 200),
           Layer = 0.4f,
+          Bullet = new Bullet(bulletTexture),
           Input = new Models.Input()
           {
             Up = Keys.Up,
@@ -54,40 +66,10 @@ namespace Tutorial020Test.States
             Shoot = Keys.Enter,
           },
           Health = 10,
-          Shoot = new System.EventHandler(Shoot),
-        },
-        new Enemy(enemyTexture)
-        {
-          Colour = Color.Red,
-          Position = new Vector2(Game1.ScreenWidth, 300),
-          Layer = 0.2f,
-          Health = 1,
-          Shoot = new System.EventHandler(Shoot),
-        }
-      };
+        });
+      }
 
-      _newSprites = new List<Sprite>();
-    }
-
-    private void Shoot(object sender, EventArgs e)
-    {
-      var sprite = sender as Sprite;
-      float speed = 0f;
-
-      if (sprite is Player)
-        speed = 5f;
-      else if (sprite is Enemy)
-        speed = -5f;
-
-      _newSprites.Add(new Bullet(_content.Load<Texture2D>("Bullet"))
-      {
-        Position = sprite.Position,
-        Colour = sprite.Colour,
-        Layer = 0.1f,
-        LifeSpan = 5f,
-        Velocity = new Vector2(speed, 0f),
-        Parent = sprite,
-      });
+      _enemyManager = new EnemyManager(_content);
     }
 
     public override void Update(GameTime gameTime)
@@ -97,6 +79,12 @@ namespace Tutorial020Test.States
 
       foreach (var sprite in _sprites)
         sprite.Update(gameTime);
+
+      _enemyManager.Update(gameTime);
+      if (_enemyManager.CanAdd && _sprites.Where(c => c is Enemy).Count() < _enemyManager.MaxEnemies)
+      {
+        _sprites.Add(_enemyManager.GetEnemy());
+      }
     }
 
     public override void PostUpdate(GameTime gameTime)
@@ -186,12 +174,17 @@ namespace Tutorial020Test.States
         }
       }
 
-      for (int i = 0; i < _newSprites.Count; i++)
+      // Add the children sprites to the list of sprites
+      int spriteCount = _sprites.Count;
+      for (int i = 0; i < spriteCount; i++)
       {
-        _sprites.Add(_newSprites[i]);
+        var sprite = _sprites[i];
+        foreach (var child in sprite.Children)
+        {
+          _sprites.Add(child);
+        }
+        sprite.Children = new List<Sprite>();
       }
-
-      _newSprites = new List<Sprite>();
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

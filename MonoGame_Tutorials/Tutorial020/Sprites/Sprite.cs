@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Tutorial020Test.Sprites
+namespace Tutorial020.Sprites
 {
-  public class Sprite : Component
+  public class Sprite : Component, ICloneable
   {
     protected float _rotation;
 
     protected Texture2D _texture;
+
+    public List<Sprite> Children { get; set; }
 
     public Color Colour { get; set; }
 
@@ -44,6 +46,8 @@ namespace Tutorial020Test.Sprites
     {
       _texture = texture;
 
+      Children = new List<Sprite>();
+
       Colour = Color.White;
     }
 
@@ -55,6 +59,11 @@ namespace Tutorial020Test.Sprites
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
       spriteBatch.Draw(_texture, Position, null, Colour, _rotation, Origin, 1f, SpriteEffects.None, Layer);
+    }
+
+    public object Clone()
+    {
+      return this.MemberwiseClone();
     }
   }
 }

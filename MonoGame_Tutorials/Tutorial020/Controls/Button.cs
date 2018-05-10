@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tutorial020Test.Controls
+namespace Tutorial020.Controls
 {
   public class Button : Component
   {

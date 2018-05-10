@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Tutorial020Test.Sprites
+namespace Tutorial020.Sprites
 {
   public class Bullet : Sprite, ICollidable
   {

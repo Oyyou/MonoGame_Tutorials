@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Tutorial020Test.Sprites
+namespace Tutorial020.Sprites
 {
-  public class Enemy : Sprite, ICollidable
+  public class Enemy : Ship
   {
     private float _timer;
 
-    public int Health { get; set; }
-
-    public EventHandler Shoot;
-
-    public float ShootingTimer = 1.5f;
-
-    public int Speed = 2;
+    public float ShootingTimer = 1.75f;
 
     public Enemy(Texture2D texture)
       : base(texture)
     {
-
+      Speed = 2f;
     }
 
     public override void Update(GameTime gameTime)
@@ -32,16 +26,15 @@ namespace Tutorial020Test.Sprites
 
       if (_timer >= ShootingTimer)
       {
-        Shoot(this, new EventArgs());
+        Shoot(-5f);
         _timer = 0;
       }
 
       Position += new Vector2(-Speed, 0);
-    }
 
-    public void OnCollide(Sprite sprite)
-    {
-      throw new NotImplementedException();
+      // if the enemy is off the left side of the screen
+      if (Position.X < -_texture.Width)
+        IsRemoved = true;
     }
   }
 }

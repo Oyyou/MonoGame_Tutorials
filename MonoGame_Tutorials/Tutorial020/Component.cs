@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tutorial020Test
+namespace Tutorial020
 {
   public abstract class Component
   {

@@ -3,10 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using Tutorial020Test.Sprites;
-using Tutorial020Test.States;
+using Tutorial020.Sprites;
+using Tutorial020.States;
 
-namespace Tutorial020Test
+namespace Tutorial020
 {
   /// <summary>
   /// This is the main type for your game.
@@ -15,6 +15,8 @@ namespace Tutorial020Test
   {
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
+
+    public static Random Random;
 
     public static int ScreenWidth = 1280;
     public static int ScreenHeight = 720;
@@ -36,6 +38,8 @@ namespace Tutorial020Test
     /// </summary>
     protected override void Initialize()
     {
+      Random = new Random();
+
       graphics.PreferredBackBufferWidth = ScreenWidth;
       graphics.PreferredBackBufferHeight = ScreenHeight;
       graphics.ApplyChanges();
