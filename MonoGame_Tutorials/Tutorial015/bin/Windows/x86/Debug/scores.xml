@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfScore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>7</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>7</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>6</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>6</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>5</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>5</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>4</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>2</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>2</Value>
+  </Score>
+  <Score>
+    <PlayerName>Bob</PlayerName>
+    <Value>0</Value>
+  </Score>
+</ArrayOfScore>

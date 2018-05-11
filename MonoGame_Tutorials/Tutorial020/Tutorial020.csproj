@@ -45,8 +45,10 @@
     <Compile Include="Component.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\ScoreManager.cs" />
+    <Compile Include="Models\Animation.cs" />
     <Compile Include="Models\Input.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Program.cs" />
