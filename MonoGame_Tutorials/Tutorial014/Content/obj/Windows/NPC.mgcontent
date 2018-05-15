@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/lewin/source/repos/Tutorial014/Tutorial014/Content/NPC.png</SourceFile>
+  <SourceFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial014/Content/NPC.png</SourceFile>
   <SourceTime>2017-09-15T18:37:57.3410237+01:00</SourceTime>
-  <DestFile>C:/Users/lewin/source/repos/Tutorial014/Tutorial014/Content/bin/Windows/NPC.xnb</DestFile>
-  <DestTime>2017-09-15T19:15:54.4591292+01:00</DestTime>
+  <DestFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial014/Content/bin/Windows/NPC.xnb</DestFile>
+  <DestTime>2018-05-11T20:09:27.603701+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

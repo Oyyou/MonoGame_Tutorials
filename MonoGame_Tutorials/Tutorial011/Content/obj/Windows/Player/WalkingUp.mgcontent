@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Share/MonoGame_Tutorials/Tutorial011/Content/Player/WalkingUp.png</SourceFile>
-  <SourceTime>2018-05-11T11:01:48.7199495+01:00</SourceTime>
-  <DestFile>C:/Share/MonoGame_Tutorials/Tutorial011/Content/bin/Windows/Player/WalkingUp.xnb</DestFile>
-  <DestTime>2018-05-11T11:03:23.9126908+01:00</DestTime>
+  <SourceFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial011/Content/Player/WalkingUp.png</SourceFile>
+  <SourceTime>2018-05-11T19:25:17.3111689+01:00</SourceTime>
+  <DestFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial011/Content/bin/Windows/Player/WalkingUp.xnb</DestFile>
+  <DestTime>2018-05-11T20:09:45.6298914+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

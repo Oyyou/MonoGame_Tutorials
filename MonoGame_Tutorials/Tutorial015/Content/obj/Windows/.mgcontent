@@ -4,7 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>c:/users/lewin/source/repos/Tutorial015/Tutorial015/Content/Button.png</File>
-    <File>c:/users/lewin/source/repos/Tutorial015/Tutorial015/Content/Font.spritefont</File>
+    <File>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial015/Content/Button.png</File>
+    <File>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial015/Content/Font.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

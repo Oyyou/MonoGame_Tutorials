@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial001", "Tutorial001\Tutorial001.csproj", "{66F1189C-3F00-4E32-94D7-BE93F7E83791}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial007", "Tutorial007\Tutorial007.csproj", "{F24A8162-50D6-4AF5-A54D-940C8BC1DDBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial011", "Tutorial011\Tutorial011.csproj", "{966ACA24-33A0-433E-93E9-69E631B84FFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial014", "Tutorial014\Tutorial014.csproj", "{E1064F2B-FBF1-4EE6-9C62-5BC23E7B9264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial015", "Tutorial015\Tutorial015.csproj", "{0AAB724E-F98B-4081-96F2-E861E16EB6F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{966ACA24-33A0-433E-93E9-69E631B84FFA}.Debug|x86.Build.0 = Debug|x86
 		{966ACA24-33A0-433E-93E9-69E631B84FFA}.Release|x86.ActiveCfg = Release|x86
 		{966ACA24-33A0-433E-93E9-69E631B84FFA}.Release|x86.Build.0 = Release|x86
+		{E1064F2B-FBF1-4EE6-9C62-5BC23E7B9264}.Debug|x86.ActiveCfg = Debug|x86
+		{E1064F2B-FBF1-4EE6-9C62-5BC23E7B9264}.Debug|x86.Build.0 = Debug|x86
+		{E1064F2B-FBF1-4EE6-9C62-5BC23E7B9264}.Release|x86.ActiveCfg = Release|x86
+		{E1064F2B-FBF1-4EE6-9C62-5BC23E7B9264}.Release|x86.Build.0 = Release|x86
+		{0AAB724E-F98B-4081-96F2-E861E16EB6F4}.Debug|x86.ActiveCfg = Debug|x86
+		{0AAB724E-F98B-4081-96F2-E861E16EB6F4}.Debug|x86.Build.0 = Debug|x86
+		{0AAB724E-F98B-4081-96F2-E861E16EB6F4}.Release|x86.ActiveCfg = Release|x86
+		{0AAB724E-F98B-4081-96F2-E861E16EB6F4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/nlewin/source/repos/MonoGame_Tutorials/Tutorial006/Content/Ship.png</SourceFile>
-  <SourceTime>2018-04-26T14:31:51.4355613+01:00</SourceTime>
-  <DestFile>C:/Users/nlewin/source/repos/MonoGame_Tutorials/Tutorial006/Content/bin/Windows/Ship.xnb</DestFile>
-  <DestTime>2018-04-26T15:09:18.9942993+01:00</DestTime>
+  <SourceFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial006/Content/Ship.png</SourceFile>
+  <SourceTime>2018-05-09T22:36:10.2567443+01:00</SourceTime>
+  <DestFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial006/Content/bin/Windows/Ship.xnb</DestFile>
+  <DestTime>2018-05-12T17:59:52.5593938+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

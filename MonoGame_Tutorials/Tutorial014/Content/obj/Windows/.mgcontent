@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/lewin/source/repos/Tutorial014/Tutorial014/Content/Background.png</File>
-    <File>C:/Users/lewin/source/repos/Tutorial014/Tutorial014/Content/NPC.png</File>
-    <File>C:/Users/lewin/source/repos/Tutorial014/Tutorial014/Content/Player.png</File>
+    <File>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial014/Content/Background.png</File>
+    <File>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial014/Content/NPC.png</File>
+    <File>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial014/Content/Player.png</File>
   </SourceFiles>
 </SourceFileCollection>
