@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial001", "Tutorial001\Tutorial001.csproj", "{66F1189C-3F00-4E32-94D7-BE93F7E83791}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial017", "Tutorial017\Tutorial017.csproj", "{6763D184-8F43-4EAF-8D86-2B1DC661BB09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial018", "Tutorial018\Tutorial018.csproj", "{B3DCE18F-83AC-4DCE-AB4E-B51881056299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial019", "Tutorial019\Tutorial019.csproj", "{A2C150C7-8116-4F2E-AB0E-1E0FF3CDB34E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{B3DCE18F-83AC-4DCE-AB4E-B51881056299}.Debug|x86.Build.0 = Debug|x86
 		{B3DCE18F-83AC-4DCE-AB4E-B51881056299}.Release|x86.ActiveCfg = Release|x86
 		{B3DCE18F-83AC-4DCE-AB4E-B51881056299}.Release|x86.Build.0 = Release|x86
+		{A2C150C7-8116-4F2E-AB0E-1E0FF3CDB34E}.Debug|x86.ActiveCfg = Debug|x86
+		{A2C150C7-8116-4F2E-AB0E-1E0FF3CDB34E}.Debug|x86.Build.0 = Debug|x86
+		{A2C150C7-8116-4F2E-AB0E-1E0FF3CDB34E}.Release|x86.ActiveCfg = Release|x86
+		{A2C150C7-8116-4F2E-AB0E-1E0FF3CDB34E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
