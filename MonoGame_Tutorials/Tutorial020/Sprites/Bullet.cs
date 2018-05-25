@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Tutorial020.Sprites
 {
-  public class Bullet : Sprite, ICollidable
+  public class Bullet : Sprite
   {
     private float _timer;
 
@@ -32,8 +32,16 @@ namespace Tutorial020.Sprites
       Position += Velocity;
     }
 
-    public void OnCollide(Sprite sprite)
+    public override void OnCollide(Sprite sprite)
     {
+      switch (sprite)
+      {
+        case Bullet b:
+        case Enemy e when e.Parent is Enemy:
+        case Player p when (p.IsDead || p.Parent is Player):
+          return;
+      }
+
       // Bullets don't collide with eachother
       if (sprite is Bullet)
         return;
@@ -56,32 +64,6 @@ namespace Tutorial020.Sprites
       }
 
       IsRemoved = true;
-
-      return;
-
-      if (this.Parent is Player && sprite is Enemy)
-      {
-        this.IsRemoved = true;
-
-        var enemy = sprite as Enemy;
-
-        enemy.Health--;
-
-        if (enemy.Health <= 0)
-          enemy.IsRemoved = true;
-      }
-
-      if (this.Parent is Enemy && sprite is Player)
-      {
-        this.IsRemoved = true;
-
-        var player = sprite as Player;
-
-        player.Health--;
-
-        if (player.Health <= 0)
-          player.IsRemoved = true;
-      }
     }
   }
 }

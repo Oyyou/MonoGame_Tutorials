@@ -111,19 +111,23 @@ namespace Tutorial020.States
 
     public override void PostUpdate(GameTime gameTime)
     {
-      foreach (var leftSprite in _sprites.Where(c => c is ICollidable))
+      foreach (var spriteA in _sprites)
       {
-        foreach (var rightSprite in _sprites.Where(c => c is ICollidable))
+        foreach (var spriteB in _sprites)
         {
           // Don't do anything if they're the same sprite!
-          if (leftSprite == rightSprite)
+          if (spriteA == spriteB)
+            continue;
+
+          if (spriteB.IsRemoved)
             continue;
 
           // Don't do anything if they're not colliding
-          if (!leftSprite.Rectangle.Intersects(rightSprite.Rectangle))
+          if (!spriteA.Rectangle.Intersects(spriteB.Rectangle))
             continue;
 
-          ((ICollidable)leftSprite).OnCollide(rightSprite);
+          if (spriteA.Intersects(spriteB))
+            spriteA.OnCollide(spriteB);
         }
       }
 
