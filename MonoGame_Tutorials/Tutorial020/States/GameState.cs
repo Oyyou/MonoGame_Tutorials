@@ -119,8 +119,8 @@ namespace Tutorial020.States
           if (spriteA == spriteB)
             continue;
 
-          if (spriteB.IsRemoved)
-            continue;
+          //if (spriteB.IsRemoved)
+          //  continue;
 
           // Don't do anything if they're not colliding
           if (!spriteA.Rectangle.Intersects(spriteB.Rectangle))

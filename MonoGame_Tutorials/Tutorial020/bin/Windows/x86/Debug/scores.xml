@@ -6,10 +6,18 @@
   </Score>
   <Score>
     <PlayerName>Player 1</PlayerName>
+    <Value>8</Value>
+  </Score>
+  <Score>
+    <PlayerName>Player 1</PlayerName>
     <Value>4</Value>
   </Score>
   <Score>
     <PlayerName>Player 2</PlayerName>
     <Value>2</Value>
+  </Score>
+  <Score>
+    <PlayerName>Player 1</PlayerName>
+    <Value>0</Value>
   </Score>
 </ArrayOfScore>

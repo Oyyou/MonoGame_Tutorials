@@ -34,13 +34,23 @@ namespace Tutorial020.Sprites
 
     public override void OnCollide(Sprite sprite)
     {
-      switch (sprite)
-      {
-        case Bullet b:
-        case Enemy e when e.Parent is Enemy:
-        case Player p when (p.IsDead || p.Parent is Player):
-          return;
-      }
+      //switch (sprite)
+      //{
+      //  case Bullet b:
+      //    return;
+      //  case Enemy e1 when e1.Parent is Enemy:
+
+      //    if (e1.Parent is Enemy)
+      //      return;
+
+      //    if()
+
+      //    return;
+      //  case Enemy e2 when 
+
+      //  case Player p when (p.IsDead || p.Parent is Player):
+      //    return;
+      //}
 
       // Bullets don't collide with eachother
       if (sprite is Bullet)
@@ -58,12 +68,11 @@ namespace Tutorial020.Sprites
       if (sprite is Player && ((Player)sprite).IsDead)
         return;
 
-      if (this.Parent is Player)
+      if (sprite is Enemy && this.Parent is Player)
       {
         ((Player)this.Parent).Score.Value++;
+        IsRemoved = true;
       }
-
-      IsRemoved = true;
     }
   }
 }
