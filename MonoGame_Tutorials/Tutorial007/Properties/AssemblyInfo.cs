@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Tutorial007")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("DST")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
