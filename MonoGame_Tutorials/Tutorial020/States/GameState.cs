@@ -118,25 +118,9 @@ namespace Tutorial020.States
           // Don't do anything if they're the same sprite!
           if (spriteA == spriteB)
             continue;
-
-          //if (spriteB.IsRemoved)
-          //  continue;
-
-          // Don't do anything if they're not colliding
-          if (!spriteA.Rectangle.Intersects(spriteB.Rectangle))
-            continue;
-
+          
           if (spriteA.Intersects(spriteB))
             spriteA.OnCollide(spriteB);
-        }
-      }
-
-      for (int i = 0; i < _sprites.Count; i++)
-      {
-        if (_sprites[i].IsRemoved)
-        {
-          _sprites.RemoveAt(i);
-          i--;
         }
       }
 
@@ -150,6 +134,15 @@ namespace Tutorial020.States
           _sprites.Add(child);
         }
         sprite.Children = new List<Sprite>();
+      }
+
+      for (int i = 0; i < _sprites.Count; i++)
+      {
+        if (_sprites[i].IsRemoved)
+        {
+          _sprites.RemoveAt(i);
+          i--;
+        }
       }
 
       // If all the players are dead, we save the scores, and return to the highscore state
