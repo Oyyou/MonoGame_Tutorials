@@ -41,11 +41,6 @@ namespace Tutorial019.Sprites
       }
     }
 
-    public override void OnCollide(Sprite sprite)
-    {
-
-    }
-
     private void Shoot()
     {
       var bullet = Bullet.Clone() as Bullet;

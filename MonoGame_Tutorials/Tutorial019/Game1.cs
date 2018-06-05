@@ -88,15 +88,15 @@ namespace Tutorial019
       foreach (var sprite in _sprites)
         sprite.Update(gameTime);
 
-      PostUpdate();
+      PostUpdate(gameTime);
 
       base.Update(gameTime);
     }
 
-    private void PostUpdate()
+    protected void PostUpdate(GameTime gameTime)
     {
       // 1. Check collision between all current "Sprites"
-      // 2. Add "Children" to the list
+      // 2. Add "Children" to the list of "_sprites" and clear
       // 3. Remove all "IsRemoved" sprites
 
       foreach (var spriteA in _sprites)
@@ -106,13 +106,8 @@ namespace Tutorial019
           if (spriteA == spriteB)
             continue;
 
-          if (!spriteA.Rectangle.Intersects(spriteB.Rectangle))
-            continue;
-
           if (spriteA.Intersects(spriteB))
-          {
             spriteA.OnCollide(spriteB);
-          }
         }
       }
 
