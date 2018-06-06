@@ -72,7 +72,6 @@ namespace Tutorial020.Sprites
 
       if (sprite is Enemy && this.Parent is Player)
       {
-        ((Player)this.Parent).Score.Value++;
         IsRemoved = true;
         AddExplosion();
       }

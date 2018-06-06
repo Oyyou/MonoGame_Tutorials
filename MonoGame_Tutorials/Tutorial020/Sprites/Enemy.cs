@@ -42,6 +42,8 @@ namespace Tutorial020.Sprites
       // If we crash into a player that is still alive
       if (sprite is Player && !((Player)sprite).IsDead)
       {
+        ((Player)sprite).Score.Value++;
+
         // We want to remove the ship completely
         IsRemoved = true;
       }
@@ -52,7 +54,10 @@ namespace Tutorial020.Sprites
         Health--;
 
         if (Health <= 0)
+        {
           IsRemoved = true;
+          ((Player)sprite.Parent).Score.Value++;
+        }
       }
     }
   }

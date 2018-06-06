@@ -69,7 +69,7 @@ namespace Tutorial020.Sprites
 
       _shootTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-      if (_currentKey.IsKeyDown(Input.Shoot) && _shootTimer> 0.25f)
+      if (_currentKey.IsKeyDown(Input.Shoot) && _shootTimer > 0.25f)
       {
         Shoot(Speed * 2);
         _shootTimer = 0f;
@@ -93,11 +93,11 @@ namespace Tutorial020.Sprites
       if (IsDead)
         return;
 
-      if ((sprite is Bullet && ((Bullet)sprite).Parent is Enemy) ||
-         sprite is Enemy)
-      {
+      if (sprite is Bullet && ((Bullet)sprite).Parent is Enemy)
         Health--;
-      }
+
+      if (sprite is Enemy)
+        Health -= 3;
     }
   }
 }
