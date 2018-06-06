@@ -54,6 +54,17 @@ namespace Tutorial020.Sprites
 
     public Sprite Parent;
 
+    /// <summary>
+    /// The area of the sprite that could "potentially" be collided with
+    /// </summary>
+    public Rectangle CollisionArea
+    {
+      get
+      {
+        return new Rectangle(Rectangle.X, Rectangle.Y, MathHelper.Max(Rectangle.Width, Rectangle.Height), MathHelper.Max(Rectangle.Width, Rectangle.Height));
+      }
+    }
+
     public Sprite(Texture2D texture)
     {
       _texture = texture;

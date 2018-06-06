@@ -118,6 +118,9 @@ namespace Tutorial020.States
           // Don't do anything if they're the same sprite!
           if (spriteA == spriteB)
             continue;
+
+          if (!spriteA.CollisionArea.Intersects(spriteB.CollisionArea))
+            continue;
           
           if (spriteA.Intersects(spriteB))
             spriteA.OnCollide(spriteB);

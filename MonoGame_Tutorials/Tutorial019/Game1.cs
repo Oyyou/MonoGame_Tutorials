@@ -105,9 +105,6 @@ namespace Tutorial019
         {
           if (spriteA == spriteB)
             continue;
-
-          if (spriteA.Intersects(spriteB))
-            spriteA.OnCollide(spriteB);
         }
       }
 
