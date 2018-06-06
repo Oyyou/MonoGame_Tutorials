@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial020/Content/Enemy_2.png</SourceFile>
-  <SourceTime>2018-05-06T23:58:49.382274+01:00</SourceTime>
-  <DestFile>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial020/Content/bin/Windows/Enemy_2.xnb</DestFile>
-  <DestTime>2018-05-25T18:36:25.4442436+01:00</DestTime>
+  <SourceFile>C:/Users/nlewin/source/repos/MonoGame_Tutorials/Tutorial020/Content/Enemy_2.png</SourceFile>
+  <SourceTime>2018-06-05T12:36:12+01:00</SourceTime>
+  <DestFile>C:/Users/nlewin/source/repos/MonoGame_Tutorials/Tutorial020/Content/bin/Windows/Enemy_2.xnb</DestFile>
+  <DestTime>2018-06-06T11:42:13.9072202+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

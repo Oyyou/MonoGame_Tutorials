@@ -20,6 +20,8 @@ namespace Tutorial020.Managers
 
     public bool CanAdd { get; set; }
 
+    public Bullet Bullet { get; set; }
+
     public int MaxEnemies { get; set; }
 
     public float SpawnTimer { get; set; }
@@ -59,8 +61,8 @@ namespace Tutorial020.Managers
       return new Enemy(texture)
       {
         Colour = Color.Red,
-        Bullet = new Bullet(_bulletTexture),
-        Health = 1,
+        Bullet = Bullet,
+        Health = 5,
         Layer = 0.2f,
         Position = new Vector2(Game1.ScreenWidth + texture.Width, Game1.Random.Next(0, Game1.ScreenHeight)),
         Speed = 2 + (float)Game1.Random.NextDouble(),

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tutorial020.Models
 {
-  public class Animation
+  public class Animation : ICloneable
   {
     public int CurrentFrame { get; set; }
 
@@ -32,6 +32,11 @@ namespace Tutorial020.Models
       IsLooping = true;
 
       FrameSpeed = 0.2f;
+    }
+
+    public object Clone()
+    {
+      return this.MemberwiseClone();
     }
   }
 }
