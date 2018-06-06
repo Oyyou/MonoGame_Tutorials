@@ -43,6 +43,17 @@ namespace Tutorial020.States
 
       _sprites = new List<Sprite>();
 
+      var bulletPrefab = new Bullet(bulletTexture)
+      {
+        Explosion = new Explosion(new Dictionary<string, Models.Animation>()
+            {
+              { "Explode", new Models.Animation(_content.Load<Texture2D>("Explosion"), 3) { FrameSpeed = 0.1f, } }
+            })
+        {
+          Layer = 0.5f,
+        }
+      };
+
       if (PlayerCount >= 1)
       {
         _sprites.Add(new Player(playerTexture)
@@ -50,11 +61,13 @@ namespace Tutorial020.States
           Colour = Color.Blue,
           Position = new Vector2(100, 50),
           Layer = 0.3f,
-          Bullet = new Bullet(bulletTexture),
+          Bullet = bulletPrefab,
           Input = new Models.Input()
           {
             Up = Keys.W,
             Down = Keys.S,
+            Left = Keys.A,
+            Right = Keys.D,
             Shoot = Keys.Space,
           },
           Health = 10,
@@ -71,13 +84,15 @@ namespace Tutorial020.States
         _sprites.Add(new Player(playerTexture)
         {
           Colour = Color.Green,
-          Position = new Vector2(125, 200),
+          Position = new Vector2(100, 200),
           Layer = 0.4f,
-          Bullet = new Bullet(bulletTexture),
+          Bullet = bulletPrefab,
           Input = new Models.Input()
           {
             Up = Keys.Up,
             Down = Keys.Down,
+            Left = Keys.Left,
+            Right = Keys.Right,
             Shoot = Keys.Enter,
           },
           Health = 10,
@@ -91,7 +106,10 @@ namespace Tutorial020.States
 
       _players = _sprites.Where(c => c is Player).Select(c => (Player)c).ToList();
 
-      _enemyManager = new EnemyManager(_content);
+      _enemyManager = new EnemyManager(_content)
+      {
+        Bullet = bulletPrefab,
+      };
     }
 
     public override void Update(GameTime gameTime)
@@ -133,9 +151,8 @@ namespace Tutorial020.States
       {
         var sprite = _sprites[i];
         foreach (var child in sprite.Children)
-        {
           _sprites.Add(child);
-        }
+
         sprite.Children = new List<Sprite>();
       }
 

@@ -39,10 +39,15 @@ namespace Tutorial020.Sprites
 
     public override void OnCollide(Sprite sprite)
     {
-      // If we hit a bullet that belongs to a player OR
       // If we crash into a player that is still alive
-      if ((sprite is Bullet && ((Bullet)sprite).Parent is Player) ||
-         (sprite is Player && !((Player)sprite).IsDead))
+      if (sprite is Player && !((Player)sprite).IsDead)
+      {
+        // We want to remove the ship completely
+        IsRemoved = true;
+      }
+
+      // If we hit a bullet that belongs to a player      
+      if (sprite is Bullet && ((Bullet)sprite).Parent is Player)
       {
         Health--;
 

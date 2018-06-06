@@ -16,6 +16,8 @@ namespace Tutorial020.Sprites
 
     private KeyboardState _previousKey;
 
+    private float _shootTimer = 0;
+
     public bool IsDead
     {
       get
@@ -56,14 +58,26 @@ namespace Tutorial020.Sprites
         _rotation = MathHelper.ToRadians(15);
       }
 
-      if (_currentKey.IsKeyDown(Input.Shoot) && _previousKey.IsKeyUp(Input.Shoot))
+      if (_currentKey.IsKeyDown(Input.Left))
       {
-        Shoot(5f);
+        velocity.X -= Speed;
+      }
+      else if (_currentKey.IsKeyDown(Input.Right))
+      {
+        velocity.X += Speed;
+      }
+
+      _shootTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+      if (_currentKey.IsKeyDown(Input.Shoot) && _shootTimer> 0.25f)
+      {
+        Shoot(Speed * 2);
+        _shootTimer = 0f;
       }
 
       Position += velocity;
 
-      Position = Vector2.Clamp(Position, new Vector2(Position.X, 0), new Vector2(Position.X, Game1.ScreenHeight));
+      Position = Vector2.Clamp(Position, new Vector2(80, 0), new Vector2(Game1.ScreenWidth / 4, Game1.ScreenHeight));
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

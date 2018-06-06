@@ -12,6 +12,8 @@ namespace Tutorial020.Sprites
   {
     private float _timer;
 
+    public Explosion Explosion;
+
     public float LifeSpan { get; set; }
 
     public Vector2 Velocity { get; set; }
@@ -72,7 +74,25 @@ namespace Tutorial020.Sprites
       {
         ((Player)this.Parent).Score.Value++;
         IsRemoved = true;
+        AddExplosion();
       }
+
+      if(sprite is Player && this.Parent is Enemy)
+      {
+        IsRemoved = true;
+        AddExplosion();
+      }
+    }
+
+    private void AddExplosion()
+    {
+      if (Explosion == null)
+        return;
+
+      var explosion = Explosion.Clone() as Explosion;
+      explosion.Position = this.Position;
+
+      Children.Add(explosion);
     }
   }
 }
