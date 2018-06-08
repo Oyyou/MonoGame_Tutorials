@@ -12,8 +12,6 @@ namespace Tutorial020.Managers
 {
   public class EnemyManager
   {
-    private Texture2D _bulletTexture;
-
     private float _timer;
 
     private List<Texture2D> _textures;
@@ -30,11 +28,9 @@ namespace Tutorial020.Managers
     {
       _textures = new List<Texture2D>()
       {
-        content.Load<Texture2D>("Enemy_1"),
-        content.Load<Texture2D>("Enemy_2"),
+        content.Load<Texture2D>("Ships/Enemy_1"),
+        content.Load<Texture2D>("Ships/Enemy_2"),
       };
-
-      _bulletTexture = content.Load<Texture2D>("Bullet");
 
       MaxEnemies = 10;
       SpawnTimer = 2.5f;

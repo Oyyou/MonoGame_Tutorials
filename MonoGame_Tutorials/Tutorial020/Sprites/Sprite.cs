@@ -236,10 +236,10 @@ namespace Tutorial020.Sprites
       return false;
     }
 
-    public virtual void OnCollide(Sprite sprite)
-    {
+    //public virtual void OnCollide(Sprite sprite)
+    //{
 
-    }
+    //}
 
     public object Clone()
     {

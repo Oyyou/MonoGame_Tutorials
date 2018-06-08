@@ -33,15 +33,21 @@ namespace Tutorial020.States
 
     public override void LoadContent()
     {
-      var playerTexture = _content.Load<Texture2D>("Player");
+      var playerTexture = _content.Load<Texture2D>("Ships/Player");
       var bulletTexture = _content.Load<Texture2D>("Bullet");
-      var enemyTexture = _content.Load<Texture2D>("Enemy_1");
 
       _font = _content.Load<SpriteFont>("Font");
 
       _scoreManager = ScoreManager.Load();
 
-      _sprites = new List<Sprite>();
+      _sprites = new List<Sprite>()
+      {
+        new Sprite(_content.Load<Texture2D>("Background/Game"))
+        {
+          Layer = 0.0f,
+          Position = new Vector2(Game1.ScreenWidth / 2, Game1.ScreenHeight / 2),
+        }
+      };
 
       var bulletPrefab = new Bullet(bulletTexture)
       {
@@ -129,9 +135,11 @@ namespace Tutorial020.States
 
     public override void PostUpdate(GameTime gameTime)
     {
-      foreach (var spriteA in _sprites)
+      var collidableSprites = _sprites.Where(c => c is ICollidable);
+
+      foreach (var spriteA in collidableSprites)
       {
-        foreach (var spriteB in _sprites)
+        foreach (var spriteB in collidableSprites)
         {
           // Don't do anything if they're the same sprite!
           if (spriteA == spriteB)
@@ -141,7 +149,7 @@ namespace Tutorial020.States
             continue;
           
           if (spriteA.Intersects(spriteB))
-            spriteA.OnCollide(spriteB);
+            ((ICollidable)spriteA).OnCollide(spriteB);
         }
       }
 

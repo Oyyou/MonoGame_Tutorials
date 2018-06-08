@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Tutorial020.Sprites
 {
-  public class Ship : Sprite
+  public class Ship : Sprite, ICollidable
   {
     public int Health { get; set; }
 
@@ -33,7 +33,7 @@ namespace Tutorial020.Sprites
       Children.Add(bullet);
     }
 
-    public override void OnCollide(Sprite sprite)
+    public virtual void OnCollide(Sprite sprite)
     {
       throw new NotImplementedException();
     }

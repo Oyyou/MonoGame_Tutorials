@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Tutorial020.Sprites
 {
-  public class Bullet : Sprite
+  public class Bullet : Sprite, ICollidable
   {
     private float _timer;
 
@@ -34,7 +34,7 @@ namespace Tutorial020.Sprites
       Position += Velocity;
     }
 
-    public override void OnCollide(Sprite sprite)
+    public void OnCollide(Sprite sprite)
     {
       //switch (sprite)
       //{
