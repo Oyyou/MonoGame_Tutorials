@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial009", "Tutorial009\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial010", "Tutorial010\Tutorial010.csproj", "{98E08752-8395-4782-9F20-0F72BB69C019}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial012", "Tutorial012\Tutorial012.csproj", "{B00B7187-DF39-4177-A744-7B48CE7BED0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -129,6 +131,10 @@ Global
 		{98E08752-8395-4782-9F20-0F72BB69C019}.Debug|x86.Build.0 = Debug|x86
 		{98E08752-8395-4782-9F20-0F72BB69C019}.Release|x86.ActiveCfg = Release|x86
 		{98E08752-8395-4782-9F20-0F72BB69C019}.Release|x86.Build.0 = Release|x86
+		{B00B7187-DF39-4177-A744-7B48CE7BED0C}.Debug|x86.ActiveCfg = Debug|x86
+		{B00B7187-DF39-4177-A744-7B48CE7BED0C}.Debug|x86.Build.0 = Debug|x86
+		{B00B7187-DF39-4177-A744-7B48CE7BED0C}.Release|x86.ActiveCfg = Release|x86
+		{B00B7187-DF39-4177-A744-7B48CE7BED0C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
