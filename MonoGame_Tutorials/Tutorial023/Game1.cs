@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Tutorial023.Misc;
+using Tutorial023.Sprites;
 
 namespace Tutorial023
 {
@@ -18,6 +19,8 @@ namespace Tutorial023
     public static int ScreenHeight = 720;
 
     private List<ScrollingBackground> _scrollingBackgrounds;
+
+    private Player _player;
 
     public Game1()
     {
@@ -51,21 +54,37 @@ namespace Tutorial023
 
       _scrollingBackgrounds = new List<ScrollingBackground>()
       {
-        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Floor"), 100f)
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Trees"), _player, 60f)
         {
           Layer = 1.0f,
         },
-        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Trees"), 50f)
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Floor"), _player, 60f)
         {
           Layer = 0.9f,
         },
-        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Hills"), 25f)
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Hills_Front"), _player, 40f)
         {
           Layer = 0.8f,
         },
-        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds"), 10f)
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Hills_Middle"), _player, 30f)
+        {
+          Layer = 0.79f,
+        },
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Fast"), _player, 25f)
+        {
+          Layer = 0.78f,
+        },
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Hills_Back"), _player, 0f)
+        {
+          Layer = 0.77f,
+        },
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Slow"), _player, 10f)
         {
           Layer = 0.7f,
+        },
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Sky"), _player, 0f)
+        {
+          Layer = 0.1f,
         },
       };
     }

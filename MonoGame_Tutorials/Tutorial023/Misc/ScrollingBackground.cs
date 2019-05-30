@@ -17,6 +17,8 @@ namespace Tutorial023.Misc
 
     private List<Sprite> _sprites;
 
+    private readonly Player _player;
+
     public float Layer
     {
       get { return _layer; }
@@ -29,14 +31,16 @@ namespace Tutorial023.Misc
       }
     }
 
-    public ScrollingBackground(Texture2D texture, float scrollingSpeed)
-      : this(new List<Texture2D>() { texture, texture }, scrollingSpeed)
+    public ScrollingBackground(Texture2D texture, Player player, float scrollingSpeed)
+      : this(new List<Texture2D>() { texture, texture }, player, scrollingSpeed)
     {
 
     }
 
-    public ScrollingBackground(List<Texture2D> textures, float scrollingSpeed)
+    public ScrollingBackground(List<Texture2D> textures, Player player, float scrollingSpeed)
     {
+      _player = player;
+
       _sprites = new List<Sprite>();
 
       for (int i = 0; i < textures.Count; i++)
@@ -54,9 +58,11 @@ namespace Tutorial023.Misc
 
     public override void Update(GameTime gameTime)
     {
+      var speed = (float)(_scrollingSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+
       foreach (var sprite in _sprites)
       {
-        sprite.Position.X -= (float)(_scrollingSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+        sprite.Position.X -= speed;
       }
 
       for (int i = 0; i < _sprites.Count; i++)
@@ -69,7 +75,7 @@ namespace Tutorial023.Misc
           if (index >= _sprites.Count)
             index = 0;
 
-          sprite.Position.X = _sprites[index].Rectangle.Right - 1;
+          sprite.Position.X = _sprites[index].Rectangle.Right - speed;
         }
       }
     }
