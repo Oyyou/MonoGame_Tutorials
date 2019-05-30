@@ -11,6 +11,8 @@ namespace Tutorial023.Misc
 {
   public class ScrollingBackground : Component
   {
+    private bool _constantSpeed;
+
     private float _layer;
 
     private float _scrollingSpeed;
@@ -18,6 +20,8 @@ namespace Tutorial023.Misc
     private List<Sprite> _sprites;
 
     private readonly Player _player;
+
+    private float _speed;
 
     public float Layer
     {
@@ -31,13 +35,13 @@ namespace Tutorial023.Misc
       }
     }
 
-    public ScrollingBackground(Texture2D texture, Player player, float scrollingSpeed)
-      : this(new List<Texture2D>() { texture, texture }, player, scrollingSpeed)
+    public ScrollingBackground(Texture2D texture, Player player, float scrollingSpeed, bool constantSpeed = false)
+      : this(new List<Texture2D>() { texture, texture }, player, scrollingSpeed, constantSpeed)
     {
 
     }
 
-    public ScrollingBackground(List<Texture2D> textures, Player player, float scrollingSpeed)
+    public ScrollingBackground(List<Texture2D> textures, Player player, float scrollingSpeed, bool constantSpeed = false)
     {
       _player = player;
 
@@ -54,17 +58,32 @@ namespace Tutorial023.Misc
       }
 
       _scrollingSpeed = scrollingSpeed;
+
+      _constantSpeed = constantSpeed;
     }
 
     public override void Update(GameTime gameTime)
     {
-      var speed = (float)(_scrollingSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+      ApplySpeed(gameTime);
+
+      CheckPosition();
+    }
+
+    private void ApplySpeed(GameTime gameTime)
+    {
+      _speed = (float)(_scrollingSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+
+      if (!_constantSpeed || _player.Velocity.X > 0)
+        _speed *= _player.Velocity.X;
 
       foreach (var sprite in _sprites)
       {
-        sprite.Position.X -= speed;
+        sprite.Position.X -= _speed;
       }
+    }
 
+    private void CheckPosition()
+    {
       for (int i = 0; i < _sprites.Count; i++)
       {
         var sprite = _sprites[i];
@@ -75,7 +94,7 @@ namespace Tutorial023.Misc
           if (index >= _sprites.Count)
             index = 0;
 
-          sprite.Position.X = _sprites[index].Rectangle.Right - speed;
+          sprite.Position.X = _sprites[index].Rectangle.Right - (_speed * 2);
         }
       }
     }

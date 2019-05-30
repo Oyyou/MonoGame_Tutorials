@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Profile>Reach</Profile>
-  <Platform>Windows</Platform>
-  <Config />
-  <SourceFiles>
-    <File>C:/Users/lewin/Documents/GitHub/MonoGame_Tutorials/MonoGame_Tutorials/Tutorial016/Content/Square.png</File>
-  </SourceFiles>
-</SourceFileCollection>

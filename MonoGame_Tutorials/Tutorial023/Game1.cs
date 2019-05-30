@@ -52,6 +52,8 @@ namespace Tutorial023
       // Create a new SpriteBatch, which can be used to draw textures.
       spriteBatch = new SpriteBatch(GraphicsDevice);
 
+      _player = new Player(null);
+
       _scrollingBackgrounds = new List<ScrollingBackground>()
       {
         new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Trees"), _player, 60f)
@@ -70,7 +72,7 @@ namespace Tutorial023
         {
           Layer = 0.79f,
         },
-        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Fast"), _player, 25f)
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Fast"), _player, 25f, true)
         {
           Layer = 0.78f,
         },
@@ -78,7 +80,7 @@ namespace Tutorial023
         {
           Layer = 0.77f,
         },
-        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Slow"), _player, 10f)
+        new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Slow"), _player, 10f, true)
         {
           Layer = 0.7f,
         },
@@ -105,6 +107,8 @@ namespace Tutorial023
     /// <param name="gameTime">Provides a snapshot of timing values.</param>
     protected override void Update(GameTime gameTime)
     {
+      _player.Update(gameTime);
+
       foreach (var sb in _scrollingBackgrounds)
         sb.Update(gameTime);
 
@@ -119,7 +123,7 @@ namespace Tutorial023
     {
       GraphicsDevice.Clear(Color.CornflowerBlue);
 
-      spriteBatch.Begin(SpriteSortMode.FrontToBack);
+      spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp);
 
       foreach (var sb in _scrollingBackgrounds)
         sb.Draw(gameTime, spriteBatch);
