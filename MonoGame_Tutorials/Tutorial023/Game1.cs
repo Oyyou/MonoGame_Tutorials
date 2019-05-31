@@ -52,13 +52,19 @@ namespace Tutorial023
       // Create a new SpriteBatch, which can be used to draw textures.
       spriteBatch = new SpriteBatch(GraphicsDevice);
 
-      _player = new Player(null);
+      var boyTexture = Content.Load<Texture2D>("boy");
+
+      _player = new Player(boyTexture)
+      {
+        Position = new Vector2(50, (ScreenHeight - boyTexture.Height) - 20),
+        Layer = 1f,
+      };
 
       _scrollingBackgrounds = new List<ScrollingBackground>()
       {
         new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Trees"), _player, 60f)
         {
-          Layer = 1.0f,
+          Layer = 0.99f,
         },
         new ScrollingBackground(Content.Load<Texture2D>("ScrollingBackgrounds/Floor"), _player, 60f)
         {
@@ -124,6 +130,8 @@ namespace Tutorial023
       GraphicsDevice.Clear(Color.CornflowerBlue);
 
       spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp);
+
+      _player.Draw(gameTime, spriteBatch);
 
       foreach (var sb in _scrollingBackgrounds)
         sb.Draw(gameTime, spriteBatch);
