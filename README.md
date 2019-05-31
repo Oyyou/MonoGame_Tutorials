@@ -52,3 +52,6 @@ Bringing everything together from the last 10 tutorials to create a functional g
 
 ### [023 - Parallaxing Background](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial023)
 Have different layer backgrounds that move at different speeds. Some are static, and some have a constant moving speed
+
+### [024 - Snow Particles](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial024)
+Creating an emitter to produce snow flakes with different properties. Set up in a way to easily add more emitter types (rain for example)
