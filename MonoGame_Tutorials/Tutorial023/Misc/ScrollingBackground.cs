@@ -90,9 +90,10 @@ namespace Tutorial023.Misc
 
         if (sprite.Rectangle.Right <= 0)
         {
-          var index = i + 1;
-          if (index >= _sprites.Count)
-            index = 0;
+          var index = i - 1;
+
+          if (index < 0)
+            index = _sprites.Count - 1;
 
           sprite.Position.X = _sprites[index].Rectangle.Right - (_speed * 2);
         }
