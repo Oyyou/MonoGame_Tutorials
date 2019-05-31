@@ -14,10 +14,6 @@ namespace Tutorial023.Sprites
 
     protected Texture2D _texture;
 
-    public Color Colour { get; set; }
-
-    public bool IsRemoved { get; set; }
-
     public float Layer
     {
       get { return _layer; }
@@ -40,8 +36,6 @@ namespace Tutorial023.Sprites
     public Sprite(Texture2D texture)
     {
       _texture = texture;
-      
-      Colour = Color.White;
     }
 
     public override void Update(GameTime gameTime)
@@ -51,7 +45,7 @@ namespace Tutorial023.Sprites
     
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
-      spriteBatch.Draw(_texture, Position, null, Colour, 0, new Vector2(0, 0), 1f, SpriteEffects.None, Layer);
+      spriteBatch.Draw(_texture, Position, null, Color.White, 0, new Vector2(0, 0), 1f, SpriteEffects.None, Layer);
     }
   }
 }
