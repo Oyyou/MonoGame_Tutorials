@@ -28,7 +28,7 @@ namespace Tutorial024.Sprites
     {
       get
       {
-        return new Rectangle((int)(Position.X - Origin.X), (int)(Position.Y - Origin.Y), _texture.Width, _texture.Height);
+        return new Rectangle((int)(Position.X - Origin.X), (int)(Position.Y - Origin.Y), (int)(_texture.Width * Scale), (int)(_texture.Height * Scale));
       }
     }
 
@@ -47,7 +47,7 @@ namespace Tutorial024.Sprites
     {
       Position += Velocity;
 
-      if (Position.Y > (Game1.ScreenHeight + _texture.Height))
+      if (Rectangle.Top > Game1.ScreenHeight)
         IsRemoved = true;
     }
 
