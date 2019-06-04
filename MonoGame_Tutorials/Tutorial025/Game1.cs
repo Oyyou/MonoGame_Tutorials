@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Tutorial025.Models;
+using Tutorial025.Sprites;
 
 namespace Tutorial025
 {
@@ -13,6 +14,8 @@ namespace Tutorial025
   {
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
+
+    private Player _player;
 
     public Game1()
     {
@@ -42,21 +45,39 @@ namespace Tutorial025
       // Create a new SpriteBatch, which can be used to draw textures.
       spriteBatch = new SpriteBatch(GraphicsDevice);
 
-      var attributesA = new Attributes()
+      var hatAttributes = new Attributes()
       {
-        HealthPoint = 5,
-        Speed = 1,
+        HealthPoint = 3,
+        Speed = 0,
       };
 
-      var attributesB = new Attributes()
+      var jumperAttributes = new Attributes()
       {
-        HealthPoint = 4,
+        HealthPoint = 2,
+        Speed = 2,
+      };
+
+      var trouserAttributes = new Attributes()
+      {
+        HealthPoint = 0,
         Speed = 3,
       };
 
-      var attributesC = attributesA + attributesB;
-
-      var t = new List<Attributes>() { attributesA, attributesB, }.Sum();
+      _player = new Player(Content.Load<Texture2D>("Player/boy"))
+      {
+        Position = new Vector2(50, 50),
+        BaseAttributes = new Attributes()
+        {
+          HealthPoint = 10,
+          Speed = 3,
+        },
+        AttributeModifiers = new List<Attributes>()
+        {
+          hatAttributes,
+          jumperAttributes,
+          trouserAttributes,
+        },
+      };
     }
 
     /// <summary>
@@ -75,10 +96,7 @@ namespace Tutorial025
     /// <param name="gameTime">Provides a snapshot of timing values.</param>
     protected override void Update(GameTime gameTime)
     {
-      if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-        Exit();
-
-      // TODO: Add your update logic here
+      _player.Update(gameTime);
 
       base.Update(gameTime);
     }
@@ -91,7 +109,11 @@ namespace Tutorial025
     {
       GraphicsDevice.Clear(Color.CornflowerBlue);
 
-      // TODO: Add your drawing code here
+      spriteBatch.Begin();
+
+      _player.Draw(gameTime, spriteBatch);
+
+      spriteBatch.End();
 
       base.Draw(gameTime);
     }

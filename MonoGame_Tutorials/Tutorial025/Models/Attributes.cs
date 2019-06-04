@@ -10,7 +10,7 @@ namespace Tutorial025.Models
   {
     public int HealthPoint { get; set; }
 
-    public int Speed { get; set; }
+    public float Speed { get; set; }
 
     public static Attributes operator +(Attributes a, Attributes b)
     {
