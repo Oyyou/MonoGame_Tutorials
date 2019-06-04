@@ -8,26 +8,26 @@ using Tutorial030.Models;
 
 namespace Tutorial030.States
 {
-  public class LevelSelectorState : State
+  public class CustomiseState : State
   {
-    public LevelSelectorState(GameModel gameModel) 
+    public CustomiseState(GameModel gameModel) 
       : base(gameModel)
     {
     }
 
     public override void LoadContent()
     {
-
+      throw new NotImplementedException();
     }
 
     public override void Update(GameTime gameTime)
     {
-
+      throw new NotImplementedException();
     }
 
     public override void Draw(GameTime gameTime)
     {
-
+      throw new NotImplementedException();
     }
   }
 }
