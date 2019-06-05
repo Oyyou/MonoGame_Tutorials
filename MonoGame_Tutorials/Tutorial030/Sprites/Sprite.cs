@@ -19,7 +19,11 @@ namespace Tutorial030.Sprites
     protected Texture2D _texture;
 
     protected Vector2 _position;
+
     protected float _layer { get; set; }
+
+
+    public Color Colour { get; set; }
 
     public float Opacity { get; set; }
 
@@ -75,7 +79,23 @@ namespace Tutorial030.Sprites
     {
       get
       {
-        return new Rectangle((int)(Position.X - Origin.X), (int)(Position.Y - Origin.Y), _texture.Width, _texture.Height);
+        int x = 0;
+        int y = 0;
+        int width = 0;
+        int height = 0;
+
+        if (_texture != null)
+        {
+          width = _texture.Width;
+          height = _texture.Height;
+        }
+        else if (_animationManager != null)
+        {
+          width = _animationManager.FrameWidth;
+          height = _animationManager.FrameHeight;
+        }
+
+        return new Rectangle((int)(Position.X - Origin.X), (int)(Position.Y - Origin.Y), (int)(width * Scale), (int)(height * Scale));
       }
     }
 
@@ -90,6 +110,8 @@ namespace Tutorial030.Sprites
       Scale = 1f;
 
       Origin = new Vector2(0, 0);
+
+      Colour = Color.White;
     }
 
     public Sprite(Dictionary<string, Animation> animations)
@@ -100,6 +122,8 @@ namespace Tutorial030.Sprites
       Opacity = 1f;
 
       Scale = 1f;
+
+      Colour = Color.White;
     }
 
     public override void Update(GameTime gameTime)
@@ -110,11 +134,24 @@ namespace Tutorial030.Sprites
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
       if (_texture != null)
-        spriteBatch.Draw(_texture, Position, null, Color.White * Opacity, Rotation, Origin, Scale, SpriteEffects.None, Layer);
+        spriteBatch.Draw(_texture, Position, null, Colour * Opacity, Rotation, Origin, Scale, SpriteEffects.None, Layer);
 
       if (_animationManager != null)
         _animationManager.Draw(spriteBatch);
 
+    }
+
+    public virtual void OnCollide(Sprite sprite)
+    {
+
+    }
+
+    public bool IsOnTopOf(Sprite sprite)
+    {
+      return this.Rectangle.Right >= sprite.Rectangle.Left &&
+          this.Rectangle.Left <= sprite.Rectangle.Right &&
+          this.Rectangle.Bottom >= sprite.Rectangle.Top &&
+          this.Rectangle.Top < sprite.Rectangle.Top;
     }
 
     public object Clone()

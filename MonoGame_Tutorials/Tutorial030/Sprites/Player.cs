@@ -12,6 +12,14 @@ namespace Tutorial030.Sprites
 {
   public class Player : Sprite
   {
+    private KeyboardState _previousKey;
+
+    private KeyboardState _currentKey;
+
+    private bool _isOnGround = false;
+
+    private bool _jumping = false;
+
     public Vector2 Velocity;
     /// <summary>
     /// These are the types of attributes to only change on level-up
@@ -40,11 +48,38 @@ namespace Tutorial030.Sprites
 
     public override void Update(GameTime gameTime)
     {
+      _previousKey = _currentKey;
+      _currentKey = Keyboard.GetState();
+
       Velocity.X = TotalAttributes.Speed;
+
+      if (Velocity.Y >= 0)
+        _jumping = false;
+
+      if (_isOnGround)
+      {
+        if (_previousKey.IsKeyUp(Keys.Space) && _currentKey.IsKeyDown(Keys.Space))
+        {
+          Velocity.Y = -10f;
+          _jumping = true;
+        }
+      }
+      else
+      {
+        Velocity.Y += 0.75f;
+      }
 
       SetAnimation();
 
       _animationManager.Update(gameTime);
+
+      _isOnGround = false;
+    }
+
+    public void ApplyVelocity(GameTime gameTime)
+    {
+      //Position = new Vector2(Position.X, Position.Y + Velocity.Y);
+      this.Y += Velocity.Y;
     }
 
     private void SetAnimation()
@@ -60,6 +95,16 @@ namespace Tutorial030.Sprites
       else
       {
         _animationManager.Play(_animations["Running"]);
+      }
+    }
+
+    public override void OnCollide(Sprite sprite)
+    {
+      if (IsOnTopOf(sprite) && !_jumping)
+      {
+        this._position.Y = sprite.Rectangle.Top - this.Rectangle.Height;
+        Velocity.Y = 0;
+        _isOnGround = true;
       }
     }
   }

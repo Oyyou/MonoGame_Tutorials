@@ -150,6 +150,7 @@ namespace Tutorial030
       {
         case LevelSelectorState levelSelectorState:
           _currentState = new PlayingState(_gameModel, _sunnyLevel);
+          _currentState.LoadContent();
           break;
 
         case CustomiseState customiseState:

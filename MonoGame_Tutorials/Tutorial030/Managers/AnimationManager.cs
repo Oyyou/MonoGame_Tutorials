@@ -17,6 +17,22 @@ namespace Tutorial030.Managers
 
     private bool _updated;
 
+    public int FrameWidth
+    {
+      get
+      {
+        return _animation.FrameWidth;
+      }
+    }
+
+    public int FrameHeight
+    {
+      get
+      {
+        return _animation.FrameHeight;
+      }
+    }
+
     public Vector2 Position { get; set; }
 
     public float Layer { get; set; }
