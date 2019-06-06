@@ -117,7 +117,7 @@ namespace Tutorial030.States
 
       foreach (var worldObject in _worldObjects)
       {
-        worldObject.Velocity = new Vector2(-_level.Player.TotalAttributes.Speed, worldObject.Velocity.Y);
+        worldObject.Velocity = new Vector2(-_level.Player.Velocity.X, worldObject.Velocity.Y);
       }
 
       PostUpdate(gameTime);
@@ -131,7 +131,7 @@ namespace Tutorial030.States
         if (spriteA == _level.Player)
           continue;
 
-        if (_level.Player.IsOnTopOf(spriteA))
+        if (_level.Player.IsTouching(spriteA))
         {
           if (spriteA is Platform)
           {
