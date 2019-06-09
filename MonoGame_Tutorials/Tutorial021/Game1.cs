@@ -118,12 +118,15 @@ namespace Tutorial021
       foreach (var sprite in _sprites)
         sprite.Update(gameTime);
 
-      PostUpdate(gameTime);
+      CheckCollision(gameTime);
+
+      foreach (var sprite in _sprites)
+        sprite.ApplyPhysics(gameTime);
 
       base.Update(gameTime);
     }
 
-    public void PostUpdate(GameTime gameTime)
+    public void CheckCollision(GameTime gameTime)
     {
       var collidableSprites = _sprites.Where(c => c.CollisionType != CollisionTypes.None);
 
@@ -135,7 +138,7 @@ namespace Tutorial021
           if (spriteA == spriteB)
             continue;
 
-          if (spriteA.WillIntersect(spriteB))
+          if (spriteA.Rectangle.Intersects(spriteB.Rectangle))
             spriteA.OnCollide(spriteB);
         }
       }

@@ -68,6 +68,14 @@ namespace Tutorial021.Sprites
       }
     }
 
+    public Vector2 Centre
+    {
+      get
+      {
+        return new Vector2(Rectangle.X + Origin.X, Rectangle.Y + Origin.Y);
+      }
+    }
+
     public float Rotation
     {
       get { return _rotation; }
@@ -89,6 +97,11 @@ namespace Tutorial021.Sprites
     }
 
     public override void Update(GameTime gameTime)
+    {
+
+    }
+
+    public virtual void ApplyPhysics(GameTime gameTime)
     {
 
     }
