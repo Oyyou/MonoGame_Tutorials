@@ -55,3 +55,15 @@ Have different layer backgrounds that move at different speeds. Some are static,
 
 ### [024 - Snow Particles](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial024)
 Creating an emitter to produce snow flakes with different properties. Set up in a way to easily add more emitter types (rain for example)
+
+### [025 - Player Attributes](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial025)
+
+### [026 - Player Power-ups](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial026)
+
+### [027 - Sounds](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial027)
+
+### [028 - Character Clothing](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial028)
+
+### [029 - Level Selector](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial029)
+
+### [030 - Platform Runner!](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial030)
