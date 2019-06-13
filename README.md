@@ -57,8 +57,10 @@ Have different layer backgrounds that move at different speeds. Some are static,
 Creating an emitter to produce snow flakes with different properties. Set up in a way to easily add more emitter types (rain for example)
 
 ### [025 - Player Attributes](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial025)
+Having an "Attributes" model, we're able to asign the player (and whoever we'll need to) different attribute values to affect the gameplay along with "AttrbiuteModifiers"
 
 ### [026 - Player Power-ups](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial026)
+Expanding from the attributes tutorial, we add the ability to collect Power-ups that apply the attributes, and a manager to remove them after a certain amount of time
 
 ### [027 - Sounds](https://github.com/Oyyou/MonoGame_Tutorials/tree/master/MonoGame_Tutorials/Tutorial027)
 
