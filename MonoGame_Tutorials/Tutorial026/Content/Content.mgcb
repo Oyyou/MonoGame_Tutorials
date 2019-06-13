@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Collectables/PowerUp.png
+#begin Collectables/snowcog.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Collectables/PowerUp.png
+/build:Collectables/snowcog.png
 
 #begin Player/boy.png
 /importer:TextureImporter

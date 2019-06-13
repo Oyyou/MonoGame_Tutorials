@@ -22,65 +22,31 @@ namespace Tutorial021.Sprites
 
     public override void Update(GameTime gameTime)
     {
-      _velocity.Y += 0.2f;
-
       if (Keyboard.GetState().IsKeyDown(Keys.A))
         _velocity.X = -2f;
       else if (Keyboard.GetState().IsKeyDown(Keys.D))
         _velocity.X = 2f;
       else _velocity.X = 0f;
 
-      if (Keyboard.GetState().IsKeyDown(Keys.Space))      
+      if (Keyboard.GetState().IsKeyDown(Keys.Space))
         _jumping = true;
     }
 
     public override void OnCollide(Sprite sprite)
     {
-      var test = sprite.Centre - (this.Centre);// + new Vector2(10, 25));
+      var test = sprite.Centre - (this.Centre);
 
-      var rotation = (float)Math.Atan2(test.Y, test.X);
-
-      var rotation2 = Math.Abs(MathHelper.ToDegrees(rotation));
-
-      bool onLeft = false;
-      bool onRight = false;
-      bool onTop = false;
-      bool onBotton = false;
-
-      int index = 0;
-
-      for (int i = -45; i <= 315; i += 90)
-      {
-        if (rotation2 >= i && rotation2 < i + 90)
-        {
-          switch (index)
-          {
-            case 0:
-              onLeft = true;
-              break;
-
-            case 1:
-              onTop = true;
-              break;
-
-            case 2:
-              onRight = true;
-              break;
-
-            case 3:
-              onBotton = true;
-              break;
-
-            default:
-              break;
-          }
-        }
-        index++;
-      }
+      var onTop = this.WillIntersectTop(sprite);
+      var onLeft = this.WillIntersectLeft(sprite);
+      var onRight = this.WillIntersectRight(sprite);
+      var onBotton = this.WillIntersectBottom(sprite);
 
       if (onTop)
       {
         _onGround = true;
+        _velocity.Y = sprite.Rectangle.Top - this.Rectangle.Bottom;
+        //this.Position = new Vector2(this.Position.X, sprite.Rectangle.Top - this.Origin.Y);
+        //this._velocity.Y = 0;
       }
       else if (onLeft && _velocity.X > 0)
       {
@@ -92,14 +58,14 @@ namespace Tutorial021.Sprites
       }
       else if (onBotton)
       {
-
+        _velocity.Y = 1;
       }
     }
 
     public override void ApplyPhysics(GameTime gameTime)
     {
-      if (_onGround)
-        _velocity.Y = 0f;
+      if (!_onGround)
+        _velocity.Y += 0.2f;
 
       if (_onGround && _jumping)
       {

@@ -21,7 +21,7 @@ namespace Tutorial026
 
     private Player _player;
 
-    private ObservableCollection<Component> _components;
+    private ObservableCollection<Sprite> _sprites;
 
     private IEnumerable<IMoveable> _worldObjects;
 
@@ -62,26 +62,26 @@ namespace Tutorial026
         },
       };
 
-      _components = new ObservableCollection<Component>();
+      _sprites = new ObservableCollection<Sprite>();
 
-      _components.CollectionChanged += _components_CollectionChanged;
+      _sprites.CollectionChanged += _components_CollectionChanged;
 
-      _components.Add(_player);
+      _sprites.Add(_player);
 
       for (int i = 0; i < 100; i++)
       {
-        var powerUp = new PowerUp(Content.Load<Texture2D>("Collectables/PowerUp"))
+        var powerUp = new PowerUp(Content.Load<Texture2D>("Collectables/snowcog"), new Models.Attributes() { Speed = 1, })
         {
           Position = new Vector2(200 * i, 300),
         };
 
-        _components.Add(powerUp);
+        _sprites.Add(powerUp);
       }
     }
 
     private void _components_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-      _worldObjects = _components.Where(c => c is IMoveable).Cast<IMoveable>();
+      _worldObjects = _sprites.Where(c => c is IMoveable).Cast<IMoveable>();
     }
 
     /// <summary>
@@ -100,27 +100,50 @@ namespace Tutorial026
     /// <param name="gameTime">Provides a snapshot of timing values.</param>
     protected override void Update(GameTime gameTime)
     {
-      foreach (var component in _components)
+      foreach (var component in _sprites)
         component.Update(gameTime);
 
-      for (int i = 0; i < _components.Count; i++)
+      CheckCollision();
+
+      ApplyPhysics();
+
+      RemoveComponents();
+
+      base.Update(gameTime);
+    }
+
+    private void CheckCollision()
+    {
+      foreach (var sprite in _sprites)
       {
-        if (_components[i] is Sprite)
+        if (sprite == _player)
+          continue;
+
+        if (_player.Rectangle.Intersects(sprite.Rectangle))
         {
-          if (((Sprite)_components[i]).IsRemoved)
-          {
-            _components.RemoveAt(i);
-            i--;
-          }
+          _player.OnCollide(sprite);
         }
       }
+    }
 
+    private void ApplyPhysics()
+    {
       foreach (var worldObject in _worldObjects)
       {
         worldObject.Velocity = new Vector2(-_player.TotalAttributes.Speed, worldObject.Velocity.Y);
       }
+    }
 
-      base.Update(gameTime);
+    private void RemoveComponents()
+    {
+      for (int i = 0; i < _sprites.Count; i++)
+      {
+        if ((_sprites[i]).IsRemoved)
+        {
+          _sprites.RemoveAt(i);
+          i--;
+        }
+      }
     }
 
     /// <summary>
@@ -133,8 +156,8 @@ namespace Tutorial026
 
       spriteBatch.Begin();
 
-      foreach (var component in _components)
-        component.Draw(gameTime, spriteBatch);
+      foreach (var sprite in _sprites)
+        sprite.Draw(gameTime, spriteBatch);
 
       spriteBatch.End();
 

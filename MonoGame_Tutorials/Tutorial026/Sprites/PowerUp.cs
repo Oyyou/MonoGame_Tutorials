@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Tutorial026.Interfaces;
+using Tutorial026.Models;
 
 namespace Tutorial026.Sprites
 {
@@ -21,6 +22,11 @@ namespace Tutorial026.Sprites
 
     public float FloatingDistance = 10f;
 
+    /// <summary>
+    /// What is gained if the power-up is collected
+    /// </summary>
+    public readonly Attributes Attributes;
+
     public Vector2 Velocity
     {
       get { return _velocity; }
@@ -30,9 +36,10 @@ namespace Tutorial026.Sprites
       }
     }
 
-    public PowerUp(Texture2D texture)
+    public PowerUp(Texture2D texture, Attributes attributes)
       : base(texture)
     {
+      Attributes = attributes;
     }
 
     public override void Update(GameTime gameTime)

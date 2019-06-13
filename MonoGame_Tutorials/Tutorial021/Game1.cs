@@ -15,6 +15,9 @@ namespace Tutorial021
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
 
+    public static int ScreenWidth = 1280;
+    public static int ScreenHeight = 720;
+
     private List<Sprite> _sprites;
 
     public Game1()
@@ -31,7 +34,9 @@ namespace Tutorial021
     /// </summary>
     protected override void Initialize()
     {
-      // TODO: Add your initialization logic here
+      graphics.PreferredBackBufferWidth = ScreenWidth;
+      graphics.PreferredBackBufferHeight = ScreenHeight;
+      graphics.ApplyChanges();
 
       base.Initialize();
     }
@@ -49,15 +54,14 @@ namespace Tutorial021
 
       _sprites = new List<Sprite>()
       {
-        new Player(texture)
+        new Sprite(Content.Load<Texture2D>("Backgrounds/Sky"))
+        {
+          Position = new Vector2(ScreenWidth / 2, ScreenHeight / 2),
+          CollisionType = CollisionTypes.None,
+        },
+        new Player(Content.Load<Texture2D>("Player/boy"))
         {
           Position = new Vector2(100, 100),
-          CollisionType = CollisionTypes.Full,
-        },
-        new Sprite(texture)
-        {
-          Position = new Vector2(50, 200),
-          Colour = Color.Black,
           CollisionType = CollisionTypes.Full,
         },
         new Sprite(texture)
@@ -93,6 +97,54 @@ namespace Tutorial021
         new Sprite(texture)
         {
           Position = new Vector2(200, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(250, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(300, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(350, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(400, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(450, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(500, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(550, 350),
+          Colour = Color.Black,
+          CollisionType = CollisionTypes.Full,
+        },
+        new Sprite(texture)
+        {
+          Position = new Vector2(600, 350),
           Colour = Color.Black,
           CollisionType = CollisionTypes.Full,
         },
@@ -138,7 +190,8 @@ namespace Tutorial021
           if (spriteA == spriteB)
             continue;
 
-          if (spriteA.Rectangle.Intersects(spriteB.Rectangle))
+          if (spriteA.WillIntersect(spriteB))
+            //if (spriteA.Rectangle.Intersects(spriteB.Rectangle))
             spriteA.OnCollide(spriteB);
         }
       }

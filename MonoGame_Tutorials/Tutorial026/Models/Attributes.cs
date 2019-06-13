@@ -10,6 +10,16 @@ namespace Tutorial026.Models
   {
     public float Speed { get; set; }
 
+    /// <summary>
+    /// How long the Attribute lasts for
+    /// </summary>
+    public float Timer { get; set; }
+
+    public Attributes()
+    {
+      Timer = 5f;
+    }
+
     public static Attributes operator +(Attributes a, Attributes b)
     {
       return new Attributes()

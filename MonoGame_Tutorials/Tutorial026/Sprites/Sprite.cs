@@ -34,6 +34,11 @@ namespace Tutorial026.Sprites
 
     }
 
+    public virtual void OnCollide(Sprite sprite)
+    {
+
+    }
+
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
       spriteBatch.Draw(_texture, Position, Color.White);

@@ -45,6 +45,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Interfaces\IMoveable.cs" />
+    <Compile Include="Managers\AttributesManager.cs" />
     <Compile Include="Models\Attributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

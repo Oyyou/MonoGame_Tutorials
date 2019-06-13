@@ -118,10 +118,42 @@ namespace Tutorial021.Sprites
 
     public bool WillIntersect(Sprite sprite)
     {
-      return this.Rectangle.Right + this._velocity.X > sprite.Rectangle.Left &&
-        this.Rectangle.Left + this._velocity.X < sprite.Rectangle.Right &&
-        this.Rectangle.Top + this._velocity.Y < sprite.Rectangle.Bottom &&
-        this.Rectangle.Bottom + this._velocity.Y >= sprite.Rectangle.Top;
+      return this.WillIntersectBottom(sprite) ||
+        this.WillIntersectLeft(sprite) ||
+        this.WillIntersectRight(sprite) ||
+        this.WillIntersectTop(sprite);
+    }
+
+    public bool WillIntersectLeft(Sprite sprite)
+    {
+      return this.Rectangle.Right + this._velocity.X >= sprite.Rectangle.Left &&
+        this.Rectangle.Left + this._velocity.X < sprite.Rectangle.Left &&
+        this.Rectangle.Top   /*+ this._velocity.Y */< sprite.Rectangle.Bottom &&
+        this.Rectangle.Bottom/* + this._velocity.Y*/ > sprite.Rectangle.Top;
+    }
+
+    public bool WillIntersectRight(Sprite sprite)
+    {
+      return this.Rectangle.Left + this._velocity.X <= sprite.Rectangle.Right &&
+        this.Rectangle.Right > sprite.Rectangle.Right &&
+        this.Rectangle.Top   /*+ this._velocity.Y */< sprite.Rectangle.Bottom &&
+        this.Rectangle.Bottom/* + this._velocity.Y*/ > sprite.Rectangle.Top;
+    }
+
+    public bool WillIntersectTop(Sprite sprite)
+    {
+      return this.Rectangle.Bottom + this._velocity.Y >= sprite.Rectangle.Top &&
+        this.Rectangle.Top < sprite.Rectangle.Top &&
+        this.Rectangle.Right/* + this._velocity.X*/ > sprite.Rectangle.Left &&
+        this.Rectangle.Left /*+ this._velocity.Y */< sprite.Rectangle.Right;
+    }
+
+    public bool WillIntersectBottom(Sprite sprite)
+    {
+      return this.Rectangle.Top + this._velocity.Y <= sprite.Rectangle.Bottom &&
+        this.Rectangle.Bottom > sprite.Rectangle.Bottom &&
+        this.Rectangle.Right/* + this._velocity.X*/ > sprite.Rectangle.Left &&
+        this.Rectangle.Left /*+ this._velocity.Y */< sprite.Rectangle.Right;
     }
   }
 }
