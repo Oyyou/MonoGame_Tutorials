@@ -33,7 +33,7 @@ namespace Tutorial029.States
         Position = new Vector2(50, 500),
       };
 
-      var levelModel = new LevelModel()
+      var levelModel1 = new LevelModel()
       {
         Name = "Mountains",
         ScrollingBackgrounds = new List<ScrollingBackground>()
@@ -73,14 +73,54 @@ namespace Tutorial029.States
         },
       };
 
+      var levelModel2 = new LevelModel()
+      {
+        Name = "Snowy Mountains",
+        ScrollingBackgrounds = new List<ScrollingBackground>()
+        {
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Trees"), _player, 60f)
+          {
+            Layer = 0.99f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Floor"), _player, 60f)
+          {
+            Layer = 0.9f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Hills_Front"), _player, 40f)
+          {
+            Layer = 0.8f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Hills_Middle"), _player, 30f)
+          {
+            Layer = 0.79f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Fast"), _player, 25f, true)
+          {
+            Layer = 0.78f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Hills_Back"), _player, 0f)
+          {
+            Layer = 0.77f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Slow"), _player, 10f, true)
+          {
+            Layer = 0.7f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Sky"), _player, 0f)
+          {
+            Layer = 0.1f,
+          },
+        },
+      };
+
       _components = new List<LevelSelector>()
       {
-        new LevelSelector(_player, levelModel)
+        new LevelSelector(_player, levelModel1)
         {
           Scale = 0.25f,
           Position = new Vector2(50, 50),
         },
-        new LevelSelector(_player, levelModel)
+        new LevelSelector(_player, levelModel2)
         {
           Scale = 0.25f,
           Position = new Vector2(420, 50),

@@ -62,7 +62,9 @@ namespace Tutorial029.Controls
 
     public LevelSelector(Player player, LevelModel levelModel)
     {
-      _player = player;    
+      _player = player;
+
+      LevelModel = levelModel;
     }
 
     public void LoadContent(ContentManager content)
