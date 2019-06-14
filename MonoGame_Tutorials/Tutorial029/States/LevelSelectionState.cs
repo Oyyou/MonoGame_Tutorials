@@ -8,7 +8,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Tutorial029.Controls;
+using Tutorial029.Misc;
 using Tutorial029.Models;
+using Tutorial029.Sprites;
 
 namespace Tutorial029.States
 {
@@ -18,19 +20,67 @@ namespace Tutorial029.States
 
     private SpriteFont _font;
 
+    private Player _player;
+
     public LevelSelectionState(GameModel gameModel)
       : base(gameModel)
     {
       _font = _content.Load<SpriteFont>("Fonts/Font");
 
+      _player = new Player(_content.Load<Texture2D>("Player/boy"))
+      {
+        Layer = 1.0f,
+        Position = new Vector2(50, 500),
+      };
+
+      var levelModel = new LevelModel()
+      {
+        Name = "Mountains",
+        ScrollingBackgrounds = new List<ScrollingBackground>()
+        {
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Trees"), _player, 60f)
+          {
+            Layer = 0.99f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Floor"), _player, 60f)
+          {
+            Layer = 0.9f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Hills_Front"), _player, 40f)
+          {
+            Layer = 0.8f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Hills_Middle"), _player, 30f)
+          {
+            Layer = 0.79f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Fast"), _player, 25f, true)
+          {
+            Layer = 0.78f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Hills_Back"), _player, 0f)
+          {
+            Layer = 0.77f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Slow"), _player, 10f, true)
+          {
+            Layer = 0.7f,
+          },
+          new ScrollingBackground(_content.Load<Texture2D>("ScrollingBackgrounds/Sky"), _player, 0f)
+          {
+            Layer = 0.1f,
+          },
+        },
+      };
+
       _components = new List<LevelSelector>()
       {
-        new LevelSelector(_content, "Level 001")
+        new LevelSelector(_player, levelModel)
         {
           Scale = 0.25f,
           Position = new Vector2(50, 50),
         },
-        new LevelSelector(_content, "Level 002")
+        new LevelSelector(_player, levelModel)
         {
           Scale = 0.25f,
           Position = new Vector2(420, 50),

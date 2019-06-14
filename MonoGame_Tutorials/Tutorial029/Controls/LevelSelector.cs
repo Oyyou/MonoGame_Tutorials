@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Tutorial029.Misc;
+using Tutorial029.Models;
 using Tutorial029.Sprites;
 
 namespace Tutorial029.Controls
@@ -49,53 +50,19 @@ namespace Tutorial029.Controls
       }
     }
 
-    public string Name { get; set; }
-
-    public LevelSelector(ContentManager content, string name)
+    public string Name
     {
-      Name = name;
-
-      _player = new Player(content.Load<Texture2D>("Player/boy"))
+      get
       {
-        Layer = 1.0f,
-        Position = new Vector2(50, 500),
-      };
+        return LevelModel.Name;
+      }
+    }
 
-      _scrollingBackgrounds = new List<ScrollingBackground>()
-      {
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Trees"), _player, 60f)
-        {
-          Layer = 0.99f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Floor"), _player, 60f)
-        {
-          Layer = 0.9f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Hills_Front"), _player, 40f)
-        {
-          Layer = 0.8f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Hills_Middle"), _player, 30f)
-        {
-          Layer = 0.79f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Fast"), _player, 25f, true)
-        {
-          Layer = 0.78f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Hills_Back"), _player, 0f)
-        {
-          Layer = 0.77f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Clouds_Slow"), _player, 10f, true)
-        {
-          Layer = 0.7f,
-        },
-        new ScrollingBackground(content.Load<Texture2D>("ScrollingBackgrounds/Sky"), _player, 0f)
-        {
-          Layer = 0.1f,
-        },
-      };
+    private readonly LevelModel LevelModel;
+
+    public LevelSelector(Player player, LevelModel levelModel)
+    {
+      _player = player;    
     }
 
     public void LoadContent(ContentManager content)
@@ -109,7 +76,7 @@ namespace Tutorial029.Controls
 
       _player.Update(gameTime);
 
-      foreach (var sb in _scrollingBackgrounds)
+      foreach (var sb in LevelModel.ScrollingBackgrounds)
         sb.Update(gameTime);
     }
 
@@ -117,7 +84,7 @@ namespace Tutorial029.Controls
     {
       _player.Draw(gameTime, spriteBatch);
 
-      foreach (var sb in _scrollingBackgrounds)
+      foreach (var sb in LevelModel.ScrollingBackgrounds)
         sb.Draw(gameTime, spriteBatch);
     }
   }
