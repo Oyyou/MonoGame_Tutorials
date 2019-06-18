@@ -19,6 +19,9 @@ namespace Tutorial026
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
 
+    public static int ScreenWidth = 1280;
+    public static int ScreenHeight = 720;
+
     private Player _player;
 
     private ObservableCollection<Sprite> _sprites;
@@ -39,7 +42,9 @@ namespace Tutorial026
     /// </summary>
     protected override void Initialize()
     {
-      // TODO: Add your initialization logic here
+      graphics.PreferredBackBufferWidth = ScreenWidth;
+      graphics.PreferredBackBufferHeight = ScreenHeight;
+      graphics.ApplyChanges();
 
       base.Initialize();
     }
@@ -55,7 +60,7 @@ namespace Tutorial026
 
       _player = new Player(Content.Load<Texture2D>("Player/boy"))
       {
-        Position = new Vector2(50, 300),
+        Position = new Vector2(50, 500),
         BaseAttributes = new Models.Attributes()
         {
           Speed = 3f,
@@ -66,17 +71,22 @@ namespace Tutorial026
 
       _sprites.CollectionChanged += _components_CollectionChanged;
 
-      _sprites.Add(_player);
+      _sprites.Add(new Sprite(Content.Load<Texture2D>("Backgrounds/Sky")));
 
       for (int i = 0; i < 100; i++)
       {
         var powerUp = new PowerUp(Content.Load<Texture2D>("Collectables/snowcog"), new Models.Attributes() { Speed = 1, })
         {
-          Position = new Vector2(200 * i, 300),
+          Position = new Vector2(200 * i, 500),
         };
 
         _sprites.Add(powerUp);
+
+        var floorTexture = Content.Load<Texture2D>("Backgrounds/Floor");
+        _sprites.Add(new Platform(floorTexture) { Position = new Vector2(i * floorTexture.Width, 0) });
       }
+
+      _sprites.Add(_player);
     }
 
     private void _components_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

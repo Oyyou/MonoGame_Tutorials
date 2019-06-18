@@ -59,6 +59,7 @@ namespace Tutorial026.Sprites
           break;
 
         default:
+          break;
           throw new Exception("Unexpected sprite type: " + sprite.ToString());
       }
     }

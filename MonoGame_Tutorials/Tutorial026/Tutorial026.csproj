@@ -49,6 +49,7 @@
     <Compile Include="Models\Attributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sprites\Platform.cs" />
     <Compile Include="Sprites\Player.cs" />
     <Compile Include="Sprites\PowerUp.cs" />
     <Compile Include="Sprites\Sprite.cs" />
