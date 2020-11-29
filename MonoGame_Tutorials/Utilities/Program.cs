@@ -47,7 +47,7 @@ namespace Utilities
           }
           catch (Exception e)
           {
-            throw new Exception(e.ToString());
+            //throw new Exception(e.ToString());
           }
 
           continue;
