@@ -16,7 +16,7 @@ namespace Utilities
 
     private static void DeleteSillyFolders()
     {
-      var test = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+      var test = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
 
       CheckAndDelete(test);
     }
