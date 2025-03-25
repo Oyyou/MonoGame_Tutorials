@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Utilities
+﻿namespace Utilities
 {
-  class Program
+  internal class Program
   {
     static void Main(string[] args)
     {
@@ -16,7 +9,7 @@ namespace Utilities
 
     private static void DeleteSillyFolders()
     {
-      var test = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+      var test = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
 
       CheckAndDelete(test);
     }
